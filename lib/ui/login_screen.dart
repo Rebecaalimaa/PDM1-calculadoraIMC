@@ -1,4 +1,3 @@
-import 'package:applogin/ui/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -9,73 +8,30 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String peso = '';
-  String altura = '';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(' AvaliacaoIMC'),
-        backgroundColor: Colors.blueGrey,
-      ),
+      appBar: AppBar(title:Text('Tela de Login'),backgroundColor: Colors.blueGrey),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              'Avalie sua saúde ',
+              'Email',
               style: TextStyle(fontSize: 18, color: Colors.blueGrey),
             ),
             TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Digite seu peso',
-              ),
-              onChanged: (value) {
-                setState(() {
-                  peso = value;
-                });
-              },
+              decoration: InputDecoration(border:OutlineInputBorder(), labelText: 'Digite seu e-mail'),
+            ),
+            Text(
+              'Senha',
+              style: TextStyle(fontSize: 18, color: Colors.blueGrey),
             ),
             TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Digite sua altura',
-              ),
-              onChanged: (value) {
-                setState(() {
-                  altura = value;
-                });
-              },
+              obscureText: true,
+              decoration: InputDecoration(border:OutlineInputBorder(), labelText: 'Digite sua senha'),
             ),
-           ElevatedButton(
-  onPressed: () {
-    double? pesoDouble = double.tryParse(peso);
-    double? alturaDouble = double.tryParse(altura);
-
-    if (pesoDouble != null && alturaDouble != null) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => HomeScreen(
-            peso: pesoDouble,
-            altura: alturaDouble,
-          ),
-        ),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Insira valores válidos!'),
-          duration: Duration(seconds: 2),
-        ),
-      );
-    }
-  },
-  child: Text('Calcular IMC'),
-),
-
+            ElevatedButton(onPressed: (){}, child: Text('Entrar'))
           ],
         ),
       ),
